@@ -6,7 +6,8 @@ from flask import Flask, request, render_template_string
 
 app = Flask(__name__)
 
-MODEL_PATH = "model.pkl"
+# Updated to match the exact filename in your GitHub repository
+MODEL_PATH = "xgboost_placement.pkl"
 model = None
 model_error = None
 
@@ -17,7 +18,7 @@ try:
             model = pickle.load(f)
         print("✅ Model loaded successfully!")
     else:
-        model_error = f"File not found: {MODEL_PATH}. Make sure your model is named 'model.pkl' and is in the root folder."
+        model_error = f"File not found: {MODEL_PATH}. Make sure your model is named 'xgboost_placement.pkl' and is in the root folder."
         print(f"❌ {model_error}")
 except Exception as e:
     model_error = f"Pickle loading failed. This usually means a version mismatch. Error: {str(e)}"
@@ -156,3 +157,7 @@ def home():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
+
+
+             
+                       
